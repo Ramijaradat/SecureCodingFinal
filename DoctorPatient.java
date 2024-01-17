@@ -28,6 +28,5 @@ public class DoctorPatient extends User {
 				+ "\n Your age is: " + this.age 
 				+ "\nYour gender is:" + this.gender);
 		System.out.println();
-		
 	}
 }

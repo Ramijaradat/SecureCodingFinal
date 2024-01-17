@@ -12,30 +12,30 @@ public class MainClass {
 
 	// main method start
 	public static void main(String[] args) {
+		while (true) {
+			main1();
+		}
+	}
+	public static void main1() {
+		String jobTitle = "0";
+		String[] infoArr = null;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the number of your title " 
 		+ "\n 1.Doctor " 
 		+ "\n 2.Patient " 
 		+ "\n 3.Registrar ");
-		int jobTitle = 0;
-		try {
-			jobTitle = sc.nextInt();
-		} catch (InputMismatchException e) {
-			System.out.println("ENTER ONLY: 1, 2, OR 3.");
-			main(args);
-		}
+		
+			jobTitle = sc.next();
 
-		String[] infoArr = null;
-
-		if (jobTitle == 3) {
+		if (jobTitle.equals("3")) {
 			infoArr = User.checkUsernameAndPassword("Registrar", 4);
 
 			if (infoArr != null) {
-				Registerar.enterNewUser();
+				Registrar.enterNewUser();
 			}
 		}
 
-		else if (jobTitle == 1) {
+		else if (jobTitle.equals("1")) {
 			infoArr = User.checkUsernameAndPassword("Doctor", 3);
 
 			if (infoArr != null) {
@@ -44,24 +44,20 @@ public class MainClass {
 				
 			}
 		}
-
-		else if (jobTitle == 2) {
+		else if (jobTitle.equals("2")) {
 			infoArr = User.checkUsernameAndPassword("Patient", 5);
 			if (infoArr != null) {
 				Patient pt = new Patient(infoArr[0], infoArr[2], Integer.parseInt(infoArr[3]), infoArr[4]);
 				pt.whatToDo();
 			}
 		}
-
 		else {
 			System.out.println("ENTER ONLY: 1, 2, OR 3.");
 			System.out.println();
-			main(args);
 		}
-
 	}
-	// end of main method.
-
+	// end of main function.
+	
 	// buffer writer method:
 	static void bufferWriter(String entityType, String enteredData) {
 		BufferedWriter bw = null;
@@ -80,7 +76,7 @@ public class MainClass {
 		}
 
 	}
-
+//hash function
 	public static String hashSHA256(String input) {
 		try {
 			// Create a MessageDigest object for SHA-256

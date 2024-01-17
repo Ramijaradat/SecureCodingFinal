@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Registerar {
+public class Registrar {
 
 	static String doctorOrPatient() {
 		Scanner sc = new Scanner(System.in);
@@ -83,13 +83,12 @@ public class Registerar {
 			System.err.println(e);
 		}
 		if (in.equals("0")) {
-			MainClass.main(null);
+			return;
 		}
 		String entityType = doctorOrPatient();
 		String enteredData = getInfoOfPatientOrDoctor();
 		MainClass.bufferWriter(entityType, enteredData);
-
-		enterNewUser();
+		//enterNewUser();
 
 	}
 }

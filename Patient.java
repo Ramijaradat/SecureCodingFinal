@@ -10,7 +10,7 @@ public class Patient extends DoctorPatient {
 	}
 	
 void showInfo () {
-	System.out.println("you are a ptient, and the following is yout information:");
+	System.out.println("you are a ptient, and the following is your information:");
 	super.showInfo();
 	return;
 }
@@ -52,7 +52,7 @@ void showInfo () {
 		} else if (choice.trim().equals("2")) {
 			showMedicalInfo();
 		} else if (choice.trim().equals("0")) {
-			MainClass.main(null);
+			return;
 		} else {
 			System.out.println("Wrong Input.");
 			}

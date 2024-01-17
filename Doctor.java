@@ -35,7 +35,7 @@ public class Doctor extends DoctorPatient {
 			} else if (choice == 2) {
 				enterMedicalInfo();
 			} else if (choice == 0) {
-				 MainClass.main(null);
+				 return;
 			} else {
 				System.out.println("Wrong Input.");
 				}
