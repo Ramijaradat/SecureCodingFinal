@@ -1,5 +1,8 @@
+package securecoding;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Registrar {
 
@@ -26,7 +29,7 @@ public class Registrar {
 	}
 
 	static String getInfoOfPatientOrDoctor() {
-		
+
 		Scanner sc = new Scanner(System.in);
 		String[] infoArr = new String[5];
 		String name;
@@ -36,18 +39,20 @@ public class Registrar {
 		System.out.println("Please enter his/her name:");
 		name = sc.next();
 		infoArr[0] = name;
+		
 		do {
-		System.out.println("Please enter his/her password between 8 to 30 characters.");
-		password = sc.next();
-		} while (password.length() < 8 || password.length() > 30);
-		password= MainClass.hashSHA256(password);
+			System.out.println("Please enter his/her password between 8 to 30 characters.");
+			password = sc.next();
+			 
+		} while (!isValidPassword(password));
+		password = MainClass.hashSHA256(password);
 		infoArr[1] = password;
 		System.out.println("Please enter his/her phone number");
 		String phoneNumber = sc.next();
 		infoArr[2] = phoneNumber;
 		age = 0;
 		do {
-		System.out.println("Please enter his/her age");
+			System.out.println("Please enter his/her age");
 			try {
 				age = sc.nextInt();
 				infoArr[3] = Integer.toString(age);
@@ -64,7 +69,7 @@ public class Registrar {
 			gender = sc.next().toLowerCase();
 		} while (!gender.equals("male") && !gender.equals("female"));
 		infoArr[4] = gender;
-		
+
 		StringBuilder all = new StringBuilder();
 		for (String element : infoArr) {
 			all.append(element).append(",");
@@ -88,7 +93,23 @@ public class Registrar {
 		String entityType = doctorOrPatient();
 		String enteredData = getInfoOfPatientOrDoctor();
 		MainClass.bufferWriter(entityType, enteredData);
-		//enterNewUser();
+		// enterNewUser();
 
+	}
+
+	public static boolean isValidPassword(String password) {
+		// Regular expression to match the password policy:
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,30}$";
+		Pattern pattern = Pattern.compile(regex);
+
+		if (pattern.matcher(password).matches()) {
+			return true; // Password is valid
+		} else {
+			System.out.println("Password does not meet the policy requirements. Please ensure it:\n"
+					+ "- Is between 8-30 characters long.\n"
+					+ "- Contains at least one lowercase letter, one uppercase letter, one number, and one special character (@$!%*?&).\n"
+					+ "- Does not contain spaces or other restricted characters.");
+			return false; // Password is invalid
+		}
 	}
 }

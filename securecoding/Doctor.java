@@ -1,3 +1,4 @@
+package securecoding;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.*;
@@ -5,11 +6,11 @@ import java.time.*;
 public class Doctor extends DoctorPatient {
 	
 
-	Doctor(String name, String phoneNumber, int age, String gender) {
+	public Doctor(String name, String phoneNumber, int age, String gender) {
 		super(name, phoneNumber, age, gender);
 	}
 
-	void showInfo() {
+	public void showInfo() {
 		System.out.println("You are Doctor, and here is your infromation");
 		super.showInfo();
 		return;

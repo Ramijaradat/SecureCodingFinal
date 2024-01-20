@@ -1,3 +1,4 @@
+package securecoding;
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
@@ -127,7 +128,7 @@ public class checkUsernameAndPasswordTest {
 	public void test8() {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
-		String input = "Raami\nJaradat\n";
+		String input = "Rami\nJaradat\n";
 	    InputStream in = new ByteArrayInputStream(input.getBytes());
 	    System.setIn(in);
 		String expected = "WRONG USER TYPE";

@@ -1,3 +1,4 @@
+package securecoding;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -5,11 +6,11 @@ import java.util.Scanner;
 
 public class Patient extends DoctorPatient {
 
-	Patient(String name, String phoneNumber, int age, String gender) {
+	public Patient(String name, String phoneNumber, int age, String gender) {
 		super(name, phoneNumber, age, gender);
 	}
 	
-void showInfo () {
+public void showInfo () {
 	System.out.println("you are a ptient, and the following is your information:");
 	super.showInfo();
 	return;

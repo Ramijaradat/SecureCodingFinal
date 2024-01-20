@@ -1,3 +1,4 @@
+package securecoding;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class User {
 	}
 
 
-	static String [] checkUsernameAndPassword(String typeOfUser, int numOfAllowedAttempts) {
+	public static String [] checkUsernameAndPassword(String typeOfUser, int numOfAllowedAttempts) {
 		if (numOfAllowedAttempts > 10) {
 			System.out.println("NUMBER OF ALLOWED ATTEMPTS CANNOT BE MORE THAN TEN.");
 			return null;

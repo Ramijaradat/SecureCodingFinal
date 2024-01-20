@@ -1,3 +1,4 @@
+package securecoding;
 
 public class DoctorPatient extends User {
 
